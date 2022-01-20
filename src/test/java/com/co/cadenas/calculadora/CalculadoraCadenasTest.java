@@ -11,12 +11,13 @@ public class CalculadoraCadenasTest {
 
     // Una cadena vacía devuelve cero
     @Test
-    public void cadenaVaciaValidacion(){
+    public void cadenaVaciaValidacion() throws Exception{
         assertThat(calculadoraCadenas.sumar(""), is(0));
     }
 
     // Un solo número devuelve el valor
-    public void ingresoNumeroRetornaElValor(){
+    @Test
+    public void ingresoNumeroRetornaElValor() throws Exception{
         assertThat(calculadoraCadenas.sumar("9"), is(9));
         assertThat(calculadoraCadenas.sumar("6"), is(6));
     }
@@ -63,10 +64,9 @@ public class CalculadoraCadenasTest {
 
     // Se puede definir un delimitador de varios caracteres en la primera línea (p. Ej., // [###] para "###" como delimitador)
     @Test
-    void delimitadorVariosCaracteresPrimeraLinea(){
-        assertThat(calculadoraCadenas.sumar("4[##]89[!]45[{}]7"),is(145));
-        assertThat(calculadoraCadenas.sumar("4[__#]89[^!]45[%]7"), is(145));
-        assertThat(calculadoraCadenas.sumar("4[##]89[^^&!]45[!%]7"), is(145));
+    public void delimitadorVariosCaracteresPrimeraLinea() throws Exception{
+        assertThat(calculadoraCadenas.sumar("4[###]5[!]85[{}]71"),is(165));
+        assertThat(calculadoraCadenas.sumar("1[__#]10000[^!]85[%]71"), is(157));
     }
 
 }
